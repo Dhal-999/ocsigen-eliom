@@ -105,37 +105,6 @@ Where scope can be:
 * `Eliom_common.site_scope` (value for the whole site),
 * `Eliom_common.global_scope` (global value for the whole server).
 Eliom references are persistant if you add optional parameter `~persistent`
-to function `Eliom_reference.eref`.
+to function `Eliom_reference.er
 
-## Learning Eliom
 
-More documentation [here](https://ocsigen.org/tuto/latest/manual/basics).
-
-Write your first Web and mobile application with Eliom using [Ocsigen Start](https://ocsigen.org/ocsigen-start)
-
-## Authors
-
-* Vincent Balat
-* Jérôme Vouillon
-* Grégoire Henry
-* Pierre Chambart
-* Benedikt Becker
-* Vasilis Papavasileiou
-* Boris Yakobowski
-* Hugo Heuzard
-* Raphaël Proust
-* Jan Rochel
-* Idir Lankri
-* Stéphane Glondu
-* Gabriel Radanne
-* Gabriel Kerneis
-* Denis Berthod
-* Jaap Boender
-* Simon Castellan
-* Mauricio Fernandez
-* Archibald Pontier
-* Simon Castellan
-* Kate Deplaix
-
-[ocsigen]: https://www.ocsigen.org/
-[main documentation page]: https://ocsigen.org/tuto/latest/manual/basics
