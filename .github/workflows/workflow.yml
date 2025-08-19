@@ -1,0 +1,53 @@
+name: Main workflow
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  schedule:
+    # Prime the caches every Monday
+    - cron: 0 1 * * MON
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+          - ubuntu-latest
+        ocaml-compiler:
+          - 5
+          - 4
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v5
+
+      - name: Set-up OCaml ${{ matrix.ocaml-compiler }}
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ${{ matrix.ocaml-compiler }}
+          opam-pin: false
+
+      - run: opam pin -y git+https://github.com/ocsigen/ocsigenserver#master
+      - run: opam install . --deps-only -y
+
+      - run: opam exec -- dune build -p eliom
+
+  lint-fmt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v5
+
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 4
+          dune-cache: true
+
+      - uses: ocaml/setup-ocaml/lint-fmt@v3

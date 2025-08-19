@@ -1,0 +1,14 @@
+*~
+#*
+*#
+.#*
+_build
+eliom.install
+
+src/**/*.mllib
+src/**/*.mldylib
+src/**/*.odocl
+
+ocsigen.org-data
+
+_opam
